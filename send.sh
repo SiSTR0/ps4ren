@@ -1,0 +1,1 @@
+socat -u FILE:ps4ren.bin TCP:192.168.1.4:9020
