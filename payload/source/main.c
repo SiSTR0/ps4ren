@@ -1,5 +1,5 @@
 /* golden + SiSTRo */
-/* 11/7/2018 */
+/* 05/03/2018 */
 
 #include "ps4ren.h"
 #include "install.h"
@@ -46,22 +46,12 @@ void jailbreak(struct thread *td, uint64_t kernbase) {
 }
 
 void debug_patches(struct thread *td, uint64_t kernbase) {
-	// sorry... this is very messy!
-	// TODO: label and explain patches
-	*(uint8_t *)(kernbase + 0x1CD0686) |= 0x14;
-	*(uint8_t *)(kernbase + 0x1CD06A9) |= 0x3;
-	*(uint8_t *)(kernbase + 0x1CD06AA) |= 0x1;
-	*(uint8_t *)(kernbase + 0x1CD06C8) |= 0x1;
-
 	// disable sysdump_perform_dump_on_fatal_trap
 	// will continue execution and give more information on crash, such as rip
 	*(uint8_t *)(kernbase + 0x7673E0) = 0xC3;
 
 	// patch vm_map_protect check
 	memcpy((void *)(kernbase + 0x1A3C08), "\x90\x90\x90\x90\x90\x90", 6);
-
-	// patch ASLR, thanks 2much4u
-	*(uint16_t *)(kernbase + 0x194875) = 0x9090;
 }
 
 void scesbl_patches(struct thread *td, uint64_t kernbase) {
@@ -77,13 +67,7 @@ void scesbl_patches(struct thread *td, uint64_t kernbase) {
 	//*(uint8_t *)(kernbase + 0x36057B) = 0;
 }
 
-struct jkuap {
-	uint64_t sycall;
-	void *payload;
-	size_t psize;
-};
-
-int jkpatch(struct thread *td, struct jkuap *uap) {
+int jkpatch(struct thread *td) {
 	uint64_t kernbase = getkernbase();
 	resolve(kernbase);
 
@@ -115,13 +99,8 @@ int jkpatch(struct thread *td, struct jkuap *uap) {
 
 	printf("[ps4ren] loading payload...\n");
 
-	if (!uap->payload) {
-		printf("[ps4ren] payload data is NULL!\n");
-		return 1;
-	}
-
 	// install wizardry
-	if (install_payload(td, kernbase, uap->payload, uap->psize)) {
+	if (install_payload(td, kernbase, kpayload, kpayload_size)) {
 		printf("[ps4ren] install_payload failed!\n");
 		return 1;
 	}
@@ -135,7 +114,10 @@ int _main(void) {
 	initKernel();
 	initLibc();
 
-	syscall(11, jkpatch, kpayload, kpayload_size);
+	syscall(11, jkpatch);
+
+	initSysUtil();
+	notify("Welcome to PS4REN v"VERSION"\nCoded by SiSTRo");
 
 	return 0;
 }

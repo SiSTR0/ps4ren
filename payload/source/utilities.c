@@ -25,3 +25,10 @@ inline void write_jmp(uint64_t address, uint64_t destination) {
 	*(uint8_t *)(address + 5) = 0x00;
 	*(uint64_t *)(address + 6) = destination;
 }
+
+inline void notify(char *message)
+{
+	char buffer[512];
+	sprintf(buffer, "%s", message);
+	sceSysUtilSendSystemNotificationWithText(222, buffer);
+}

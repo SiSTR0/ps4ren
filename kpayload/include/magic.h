@@ -1,10 +1,5 @@
 /* golden + SiSTRo */
-/* 11/7/2018 */
-
-// inspired by fail0verflow, of course
- // 5.05
-
- // ref 0xFFFFFFFF87464000
+/* 3/13/2020 */
 
 #define __Xfast_syscall							0x0001C0
 #define __copyin								0x1EA710
@@ -54,6 +49,7 @@
 #define __vm_map_lock							0x19EFF0
 #define __vm_map_unlock 						0x19F060
 #define __proc_rwmem							0x30D150
+#define __eventhandler_register					0x1EC400
 
 //net.c
 #define __sys_socket							0x318EE0
@@ -65,12 +61,15 @@
 #define __sys_setsockopt						0x31B750
 #define __sys_close								0x0C0EB0
 
-#define __sceRegMgrGetInt						0x4F9E50
-#define __regMgrComGetReg						0x4F9F30
-
 #define __disable_console_output				0x19ECEB0
 #define __M_TEMP								0x14B4110
 #define __kernel_map							0x1AC60E0
 #define __prison0								0x10986a0
 #define __rootvnode								0x22c1a70
 #define __allproc								0x2382FF8
+
+// SceShellUI patches
+#define __CreateUserForIDU_patch				0x01A8FA0
+#define __remote_play_menu_patch				0x0EE638E
+#define __SceRemotePlay_patch1					0x003C33F
+#define __SceRemotePlay_patch2					0x003C35A

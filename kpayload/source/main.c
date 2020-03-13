@@ -1,5 +1,5 @@
-/* golden + SiSTRo */
-/* 11/7/2018 */
+/* SiSTRo */
+/* 3/13/2020 */
 
 #include "ps4ren.h"
 
@@ -56,9 +56,8 @@ int payload_entry(void *arg) {
 	// install trap hook
 	install_trap_hook();
 
-	// install idu patch
-	install_sceRegMgrGetInt_hook();
-	shellui_idu_patch();
+	// install remote play patches
+    install_remoteplay_patches();
 
 	return 0;
 }

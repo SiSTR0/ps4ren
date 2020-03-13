@@ -59,7 +59,7 @@ void (*vm_map_lock)(struct vm_map * map);
 void (*vm_map_unlock)(struct vm_map * map);
 int (*vm_map_delete)(struct vm_map * map, uint64_t start, uint64_t end);
 int (*vm_map_protect)(struct vm_map * map, uint64_t start, uint64_t end, int new_prot, uint64_t set_max);
-
+void (*eventhandler_register)(void *list, const char *name, void *func, void *arg, int priority);
 
 void resolve(uint64_t kernbase);
 

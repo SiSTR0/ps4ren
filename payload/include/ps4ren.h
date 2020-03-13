@@ -1,5 +1,5 @@
 /* golden + SiSTRo */
-/* 11/7/2018 */
+/* 3/13/2020 */
 
 #ifndef _PS4REN_H
 #define _PS4REN_H
@@ -8,7 +8,7 @@
 #define FALSE 0
 #define TRUE 1
 
-#define VERSION "1.00"
+#define VERSION "2.0"
 
 // libPS4
 #include <ps4.h>

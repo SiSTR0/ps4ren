@@ -1,5 +1,5 @@
 /* golden + SiSTRo */
-/* 11/7/2018 */
+/* 3/13/2020 */
 
 #ifndef _UTILITIES_H
 #define _UTILITIES_H
@@ -14,5 +14,6 @@ uint64_t getkernbase();
 void *alloc(uint32_t size);
 void dealloc(void *addr);
 void write_jmp(uint64_t address, uint64_t destination);
+void notify(char *message);
 
 #endif

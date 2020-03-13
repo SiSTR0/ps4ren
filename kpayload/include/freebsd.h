@@ -90,6 +90,8 @@ typedef uint64_t size_t;
 #define	ETIMEDOUT	60
 #define	ECONNREFUSED	61
 
+#define EVENTHANDLER_PRI_LAST	20000
+
 #define	TRACEBUF	struct qm_trace trace;
 
 #define	TAILQ_FIRST(head) ((head)->tqh_first)

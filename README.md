@@ -27,18 +27,10 @@
 ### Notes
 **Only for 5.05 Jailbroken PlayStation 4 consoles!**
 
-When you load payload, it will simulate the IDU mode with patches, this will allow you to enable to register any device for remote play from the options menu.
-
-During IDU mode there are some limitations in the UI such as the disabled PS button event.
-
-It is recommended to reboot after finishing the registration of the devices.
-
-**I do not take any responsibility in case of damage. Use at your risk.**
+New version is safer then v1.0 and doesn't use fake IDU mode.
+It also persists even after resume from rest mode.
 
 ### Credits
 
-Thank you to **golden** who created his magical [jkpatch](https://github.com/xemio/jkpatch) - Twitter: [@cloverleafswag3](https://twitter.com/cloverleafswag3) psxhax: [g991](https://www.psxhax.com/members/g991.473299/)
-
-
-**golden + SiSTRo**
+Thank you to **golden** who created his magical [jkpatch](https://github.com/xemio/jkpatch) - Twitter: [@goldfitzgerald](https://twitter.com/goldfitzgerald)
 
